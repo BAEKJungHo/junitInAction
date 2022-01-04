@@ -1,2 +1,5 @@
-# junitInAction
-JUnit In Action
+# JUnit In Action 
+
+- 저자 : 피터 타치브, 펠리페 레미, 빈센트 마솔, 게리 그레고리
+- 옮긴이 : 이복연
+- 출판사 : 프로그래밍 인사이트
