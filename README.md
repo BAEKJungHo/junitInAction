@@ -24,4 +24,6 @@
 - Chapter16. OSGi 컴포넌트 테스트하기
 - Chapter17. 데이터베이스 액세스 테스트하기
 - Chapter18. JPA 기반 애플리케이션 테스트하기
+  - [소스](https://github.com/BAEKJungHo/junitInAction/tree/main/src/chapter18)
+  - [내용](https://github.com/BAEKJungHo/junitInAction/tree/main/contents/chapter18)
 - Chapter19. JUnit 에 부스터를...
