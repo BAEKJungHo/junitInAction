@@ -27,3 +27,9 @@
   - [소스](https://github.com/BAEKJungHo/junitInAction/tree/main/src/chapter18)
   - [내용](https://github.com/BAEKJungHo/junitInAction/tree/main/contents/chapter18)
 - Chapter19. JUnit 에 부스터를...
+
+## Issues
+
+- [#issue1] Junit 이란 ?
+- [#issue2] 단위 테스트란 ?
+- [#issue2-1] API 계약
