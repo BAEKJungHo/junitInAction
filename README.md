@@ -1,10 +1,10 @@
-# JUnit In Action 
+# 🌌 JUnit In Action 
 
 - 저자 : 피터 타치브, 펠리페 레미, 빈센트 마솔, 게리 그레고리
 - 옮긴이 : 이복연
 - 출판사 : 프로그래밍 인사이트
 
-## Catalog
+## 📚 Catalog
 
 - Chapter1. Junit 기본
 - Chapter2. Junit 핵심 들여다 보기
@@ -28,7 +28,7 @@
   - [내용](https://github.com/BAEKJungHo/junitInAction/tree/main/contents/chapter18)
 - Chapter19. JUnit 에 부스터를...
 
-## Issues
+## ✔ [Issues](https://github.com/BAEKJungHo/junitInAction/tree/main/contents)
 
 - [#issue1] Junit 이란 ?
 - [#issue2] 단위 테스트란 ?
