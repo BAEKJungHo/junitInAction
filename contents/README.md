@@ -38,6 +38,8 @@
   - `Junit5`
     - @AfterAll or @AfterEach 와 같이 사용된다.
 
+> [JPA boilerplate code](https://github.com/BAEKJungHo/junitInAction/blob/main/contents/chapter18/README.md#jpa-boilerplate-code)
+
 ## References
 
 - https://junit.org/junit5/docs/current/user-guide/
