@@ -1,6 +1,9 @@
 package junit.in.action;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.connection.ConnectionProvider;
 import org.hibernate.ejb.EntityManagerFactoryImpl;
+import org.hibernate.impl.SessionFactoryImpl;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,21 +13,23 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.sql.Connection;
+import org.hibernate.cfg.Settings;
 
-class AbstractJpaTestCase {
+public class AbstractJpaTestCase {
 
     private static EntityManagerFactory emf;
     protected static Connection connection;
     protected EntityManager em;
 
     @BeforeAll
-    static void setUpDatabase() throws Exception {
+    public static void setUpDatabase() throws Exception {
+        // emf 생성은 비용이 많이 소모되기 때문에 한번만 수행되도록 한다.
         emf = Persistence.createEntityManagerFactory("test-chapter-18");
         connection = getConnection(emf);
     }
 
     @AfterAll
-    static void closeDatabase() throws Exception {
+    public static void closeDatabase() throws Exception {
         if (connection != null) {
             connection.close();
             connection = null;
@@ -35,19 +40,42 @@ class AbstractJpaTestCase {
     }
 
     @BeforeEach
-    void setEntityManager() {
+    public void setEntityManager() {
         em = emf.createEntityManager();
     }
 
     @AfterEach
-    void closeEntityManager() {
+    public void closeEntityManager() {
         em.close();
     }
 
-    static Connection getConnection(Object object) throws Exception {
+    public static Connection getConnection(Object object) throws Exception {
         Connection connection = null;
         if (object instanceof EntityManagerFactoryImpl) {
+            EntityManagerFactoryImpl emfImpl = (EntityManagerFactoryImpl) object;
+            SessionFactory sessionFactory = emfImpl.getSessionFactory();
+            if (sessionFactory instanceof SessionFactoryImpl) {
+                SessionFactoryImpl sfi = (SessionFactoryImpl) sessionFactory;
+                Settings settings = sfi.getSettings();
+                ConnectionProvider provider = settings.getConnectionProvider();
+                connection = provider.getConnection();
+            }
         }
-        return null;
+        return connection;
+    }
+
+    protected void beginTransaction() {
+        em.getTransaction().begin();
+    }
+
+    protected void commitTranscation() {
+        em.getTransaction().commit();
+    }
+
+    protected void commitTransaction(boolean clearContext) {
+        commitTranscation();
+        if(clearContext) {
+            em.clear();
+        }
     }
 }

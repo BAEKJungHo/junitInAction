@@ -6,8 +6,8 @@ import junit.in.action.persistencelayer.UserDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import static junit.in.action.model.EntitiesHelper.*;
 
-import static junit.in.action.chapter18.model.EntitiesHelper.*;
 import static org.easymock.EasyMock.*;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
