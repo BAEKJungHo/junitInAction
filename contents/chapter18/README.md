@@ -62,7 +62,7 @@ SQL 생성은 JPA 벤더가 알아서 해주고, JPA 벤더 대부분은 잘 알
 
 ```java
 @Slf4j
-public class GenericJPATest {
+class GenericJPATest {
  
     private static EntityManagerFactory emf;
     private EntityManager em;
