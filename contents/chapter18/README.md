@@ -57,3 +57,45 @@ SQL 생성은 JPA 벤더가 알아서 해주고, JPA 벤더 대부분은 잘 알
 따라서, `H2 와 같은 임베디드 데이터베이스`를 사용하여 영속 계층에 대한 단위 테스트 속도를 올릴 수 있다.
 
 > 테스트용 DB 설정과, 개발용 DB 설정을 따로 가져가면 좋다.
+
+## JPA boilerplate code
+
+```java
+@Slf4j
+public class GenericJPATest {
+ 
+    private static EntityManagerFactory emf;
+    private EntityManager em;
+    private EntityTransaction transaction;
+ 
+    @BeforeAll
+    static void setFixturesAll() throws Exception {
+        emf = Persistence.createEntityManagerFactory("[test-persistence-unit]");
+    }
+ 
+    @AfterAll
+    static void tearDownAll() throws Exception {
+        if (emf != null) {
+            emf.close();
+        }
+    }
+ 
+    @BeforeEach
+    void setFixtures() throws Exception {
+        em = emf.createEntityManager();
+        transaction = em.getTransaction();
+    }
+ 
+    @AfterEach
+    void tearDown() throws Exception {
+        if (em != null) {
+            em.close();
+        }
+    }
+ 
+    @Test
+    void test() throws Exception {
+        transaction 과 em 을 사용하여 테스트
+    }
+}
+```
