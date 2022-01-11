@@ -32,4 +32,5 @@
 
 - [#issue1] Junit 이란 ?
 - [#issue2] 단위 테스트란 ?
-- [#issue2-1] API 계약
+- [#issue3] API 계약
+- [#issue4] 단위 테스트의 몇 가지 중요한 개념
